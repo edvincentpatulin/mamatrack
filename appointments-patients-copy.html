@@ -39,6 +39,13 @@
     <link rel="stylesheet" href="assets/vendor/calendar/css/main.min.css" />
     <link rel="stylesheet" href="assets/vendor/calendar/css/custom.css" />
   </head>
+  <script>
+    function confirmLogout(event) {
+      if (!confirm("Are you sure you want to logout?")) {
+        event.preventDefault(); // Prevent the logout action if the user cancels
+      }
+    }
+  </script>
 
   <body>
     <!-- Page wrapper starts -->
@@ -107,7 +114,12 @@
                 <h6 class="m-0">Kim Chi</h6>
               </div>
               <div class="mx-3 my-2 d-grid">
-                <a href="login.html" class="btn btn-danger">Logout</a>
+                <a
+                  href="login.html"
+                  class="btn btn-danger"
+                  onclick="confirmLogout(event)"
+                  >Logout</a
+                >
               </div>
             </div>
           </div>
@@ -167,13 +179,16 @@
                 <ul class="treeview-menu">
                   <li>
                     <a href="appointments-patients-copy.html" class="active-sub"
-                      >View Appointments</a
+                      >Appointments Calendar</a
                     >
                   </li>
                   <li>
                     <a href="appointments-list-patients-copy.html"
                       >Appointments List</a
                     >
+                  </li>
+                  <li>
+                    <a href="appointment-record.html">Appointments Record</a>
                   </li>
                   <li>
                     <a href="book-appointment.html">Book Appointment</a>
@@ -193,6 +208,20 @@
             </ul>
           </div>
           <!-- Sidebar menu ends -->
+          <div class="sidebar-footer mt-auto">
+            <ul class="sidebar-menu">
+              <li>
+                <a
+                  href="login.html"
+                  class="text-danger"
+                  onclick="confirmLogout(event)"
+                >
+                  <i class="ri-logout-box-r-line"></i>
+                  <span class="menu-text">Logout</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </nav>
         <!-- Sidebar wrapper ends -->
 

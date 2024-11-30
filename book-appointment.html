@@ -36,6 +36,14 @@
     />
   </head>
 
+  <script>
+    function confirmLogout(event) {
+      if (!confirm("Are you sure you want to logout?")) {
+        event.preventDefault(); // Prevent the logout action if the user cancels
+      }
+    }
+  </script>
+
   <body>
     <!-- Page wrapper starts -->
     <div class="page-wrapper">
@@ -102,7 +110,7 @@
                 <h6 class="m-0">Kim Chi</h6>
               </div>
               <div class="mx-3 my-2 d-grid">
-                <a href="login.html" class="btn btn-danger">Logout</a>
+                <a href="login.html" class="btn btn-danger" onclick="confirmLogout(event)">Logout</a>
               </div>
             </div>
           </div>
@@ -162,18 +170,21 @@
                 <ul class="treeview-menu">
                   <li>
                     <a href="appointments-patients-copy.html"
-                      >View Appointments</a
+                      >Appointments Calendar</a
                     >
                   </li>
                   <li>
-                    <a href="appointments-list-patients-copy.html"
+                    <a
+                      href="appointments-list-patients-copy.html"
+                      
                       >Appointments List</a
                     >
                   </li>
                   <li>
-                    <a href="book-appointment.html" class="active-sub"
-                      >Book Appointment</a
-                    >
+                    <a href="appointment-record.html">Appointments Record</a>
+                  </li>
+                  <li>
+                    <a href="book-appointment.html" class="active-sub">Book Appointment</a>
                   </li>
                   <!-- <li>
                     <a href="edit-appointment.html">Edit Appointment</a>
@@ -190,6 +201,20 @@
             </ul>
           </div>
           <!-- Sidebar menu ends -->
+          <div class="sidebar-footer mt-auto">
+            <ul class="sidebar-menu">
+              <li>
+                <a
+                  href="login.html"
+                  class="text-danger"
+                  onclick="confirmLogout(event)"
+                >
+                  <i class="ri-logout-box-r-line"></i>
+                  <span class="menu-text">Logout</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </nav>
         <!-- Sidebar wrapper ends -->
 
@@ -289,10 +314,10 @@
                               <div class="card mb-3">
                                 <div class="card-body">
                                   <div class="text-center">
-                                    <a
+                                    <!-- <a
                                       href="doctors-profile.html"
                                       class="d-flex align-items-center flex-column"
-                                    >
+                                    > -->
                                       <img
                                         src="assets/images/user.png"
                                         alt="Hospitals Admin Template"
@@ -318,10 +343,10 @@
                               <div class="card mb-3">
                                 <div class="card-body">
                                   <div class="text-center">
-                                    <a
+                                    <!-- <a
                                       href="doctors-profile.html"
                                       class="d-flex align-items-center flex-column"
-                                    >
+                                    > -->
                                       <img
                                         src="assets/images/user1.png"
                                         alt="Hospitals Admin Template"
@@ -345,10 +370,10 @@
                               <div class="card mb-3">
                                 <div class="card-body">
                                   <div class="text-center">
-                                    <a
+                                    <!-- <a
                                       href="doctors-profile.html"
                                       class="d-flex align-items-center flex-column"
-                                    >
+                                    > -->
                                       <img
                                         src="assets/images/user6.png"
                                         alt="Hospitals Admin Template"
@@ -385,7 +410,7 @@
                                 type="text"
                                 class="form-control"
                                 id="a1"
-                                placeholder="Enter fullname"
+                                value="Kim Chi"
                               />
                             </div>
                           </div>
@@ -398,7 +423,7 @@
                                 type="email"
                                 class="form-control"
                                 id="a2"
-                                placeholder="Enter email address"
+                                value="test@testing.com"
                               />
                             </div>
                           </div>
@@ -420,7 +445,7 @@
                                 type="number"
                                 class="form-control"
                                 id="a4"
-                                placeholder="Enter age"
+                                value="33"
                               />
                             </div>
                           </div>
@@ -433,7 +458,7 @@
                                 type="text"
                                 class="form-control"
                                 id="a5"
-                                placeholder="Enter phone number"
+                                value="0987654321"
                               />
                             </div>
                           </div>

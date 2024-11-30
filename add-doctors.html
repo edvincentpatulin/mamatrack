@@ -42,6 +42,29 @@
     <link rel="stylesheet" href="assets/vendor/quill/quill.core.css" />
   </head>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const birthdayInput = document.getElementById("a3");
+      const ageInput = document.getElementById("a4");
+
+      birthdayInput.addEventListener("change", function () {
+        const birthday = new Date(birthdayInput.value);
+        const today = new Date();
+
+        let age = today.getFullYear() - birthday.getFullYear();
+        const monthDifference = today.getMonth() - birthday.getMonth();
+        if (
+          monthDifference < 0 ||
+          (monthDifference === 0 && today.getDate() < birthday.getDate())
+        ) {
+          age--;
+        }
+
+        ageInput.value = age > 0 ? age : ""; // Ensure no negative age
+      });
+    });
+  </script>
+
   <body>
     <!-- Page wrapper starts -->
     <div class="page-wrapper">
@@ -184,7 +207,7 @@
               <li class="treeview">
                 <a href="#!">
                   <i class="ri-dossier-line"></i>
-                  <span class="menu-text">Appointments</span>
+                  <span class="menu-text">Appointments Calendar</span>
                 </a>
                 <ul class="treeview-menu">
                   <li>
@@ -382,15 +405,32 @@
                                 </div>
                               </div>
                             </div>
+
                             <div class="col-xxl-3 col-lg-4 col-sm-6">
                               <div class="mb-3">
-                                <label class="form-label" for="a2"
+                                <label class="form-label" for="a3"
+                                  >Birthday
+                                  <span class="text-danger">*</span></label
+                                >
+                                <div class="input-group">
+                                  <input
+                                    type="date"
+                                    class="form-control"
+                                    id="a3"
+                                    placeholder="Enter date"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                              <div class="mb-3">
+                                <label class="form-label" for="a4"
                                   >Age <span class="text-danger">*</span></label
                                 >
                                 <input
                                   type="text"
                                   class="form-control"
-                                  id="a2"
+                                  id="a4"
                                   placeholder="Enter Age"
                                 />
                               </div>
@@ -431,25 +471,6 @@
                                       >Female</label
                                     >
                                   </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-xxl-3 col-lg-4 col-sm-6">
-                              <div class="mb-3">
-                                <label class="form-label" for="a4"
-                                  >Create ID
-                                  <span class="text-danger">*</span></label
-                                >
-                                <div class="input-group">
-                                  <span class="input-group-text">
-                                    <i class="ri-secure-payment-line"></i>
-                                  </span>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="a4"
-                                    placeholder="Create Unique ID"
-                                  />
                                 </div>
                               </div>
                             </div>

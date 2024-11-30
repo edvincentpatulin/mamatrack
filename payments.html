@@ -230,7 +230,7 @@
                 </a>
                 <ul class="treeview-menu">
                   <li>
-                    <a href="appointments.html">Appointments</a>
+                    <a href="appointments.html">Appointments Calendar</a>
                   </li>
                   <li>
                     <a href="appointments-list.html">Appointments List</a>
@@ -348,19 +348,26 @@
               </div>
             </div>
             <!-- Row ends -->
-
-            <!-- Row start -->
+          
+            <!-- Payments Table -->
             <div class="row gx-3">
               <div class="col-sm-12">
-                <!-- Card start -->
                 <div class="card">
                   <div class="card-header">
                     <h5 class="card-title">Summary</h5>
                   </div>
                   <div class="card-body">
-                    <!-- Table start -->
                     <div class="table-responsive">
-                      <table id="customButtons" class="table m-0 align-middle">
+                      <!-- Filter Buttons -->
+                      <div class="d-flex justify-content-start mb-3">
+                        <button class="btn btn-outline-primary m-1" onclick="filterTable('Paid')">Paid</button>
+                        <button class="btn btn-outline-warning m-1" onclick="filterTable('Pending')">Pending</button>
+                        <button class="btn btn-outline-danger m-1" onclick="filterTable('Unpaid')">Unpaid</button>
+                        <button class="btn btn-outline-secondary m-1" onclick="filterTable('All')">All</button>
+                      </div>
+          
+                      <!-- Table -->
+                      <table class="table m-0 align-middle">
                         <thead>
                           <tr>
                             <th>#</th>
@@ -373,7 +380,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
+                          <tr class="status-paid">
                             <td>1</td>
                             <td>#000988</td>
                             <td>Marie Mar</td>
@@ -382,16 +389,16 @@
                             <td>₱2590.00</td>
                             <td><span class="badge bg-success">Paid</span></td>
                           </tr>
-                          <tr>
+                          <tr class="status-pending">
                             <td>2</td>
                             <td>#000927</td>
                             <td>Kim Chi</td>
                             <td>Cash</td>
                             <td>14/05/2024</td>
                             <td>₱3470.00</td>
-                            <td><span class="badge bg-success">Paid</span></td>
+                            <td><span class="badge bg-warning">Pending</span></td>
                           </tr>
-                          <tr>
+                          <tr class="status-unpaid">
                             <td>3</td>
                             <td>#000763</td>
                             <td>Princess Mae Puspus</td>
@@ -400,7 +407,7 @@
                             <td>₱7630.00</td>
                             <td><span class="badge bg-danger">Unpaid</span></td>
                           </tr>
-                          <tr>
+                          <tr class="status-paid">
                             <td>4</td>
                             <td>#000876</td>
                             <td>Henriq Agas</td>
@@ -412,29 +419,32 @@
                         </tbody>
                       </table>
                     </div>
-                    <!-- Table end -->
                   </div>
                 </div>
-                <!-- Card end -->
               </div>
             </div>
-            <!-- Row end -->
           </div>
-          <!-- App body ends -->
-        </div>
-        <!-- App container ends -->
-      </div>
-      <!-- Main container ends -->
-    </div>
-    <!-- Page wrapper ends -->
-
-    <!-- *************
-			************ JavaScript Files *************
-		************* -->
-    <!-- Required jQuery first, then Bootstrap Bundle JS -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/moment.min.js"></script>
+          
+          <!-- ************ JavaScript Files ************ -->
+          <script src="assets/js/jquery.min.js"></script>
+          <script src="assets/js/bootstrap.bundle.min.js"></script>
+          <script src="assets/js/moment.min.js"></script>
+          <script>
+            function filterTable(status) {
+              const rows = document.querySelectorAll("table tbody tr");
+          
+              rows.forEach((row) => {
+                row.style.display = "none"; // Initially hide all rows
+          
+                if (status === "All") {
+                  row.style.display = ""; // Show all rows if "All" is selected
+                } else if (row.classList.contains("status-" + status.toLowerCase())) {
+                  row.style.display = ""; // Show only rows that match the selected status
+                }
+              });
+            }
+          </script>
+          
 
     <!-- *************
 			************ Vendor Js Files *************

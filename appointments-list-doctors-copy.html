@@ -173,13 +173,13 @@
               <li>
                 <a href="appointments-doctors-copy.html">
                   <i class="ri-dossier-line"></i>
-                  <span class="menu-text">Appointment</span>
+                  <span class="menu-text">Appointments Calendar</span>
                 </a>
               </li>
               <li class="active current-page">
                 <a href="appointments-list-doctors-copy.html">
                   <i class="ri-health-book-line"></i>
-                  <span class="menu-text">Appointment List</span>
+                  <span class="menu-text">Appointments List</span>
                 </a>
               </li>
               <!-- <li>
@@ -230,7 +230,7 @@
                     <div class="table-responsive">
                       <table
                         id="appointmentsGrid"
-                        class="table m-0 align-middle"
+                        class="table truncate m-0 align-middle"
                       >
                         <thead>
                           <tr>
@@ -239,7 +239,12 @@
                             <th>Age</th>
                             <th>Consulting Doctor</th>
                             <th>Department</th>
-                            <th>Date</th>
+                            <th>
+                              <span id="sortDate" style="cursor: pointer">
+                                Date
+                                <i class="ri-arrow-up-down-fill"></i>
+                              </span>
+                            </th>
                             <th>Time</th>
                             <th>Purpose</th>
                             <th>Actions</th>
@@ -254,7 +259,7 @@
                               <img
                                 src="assets/images/user.png"
                                 class="img-shadow img-2x rounded-5 me-1"
-                                alt="Hospital Admin Template"
+                                alt="Doctor"
                               />
                               Allan Stuart
                             </td>
@@ -292,7 +297,7 @@
                               <img
                                 src="assets/images/user.png"
                                 class="img-shadow img-2x rounded-5 me-1"
-                                alt="Hospital Admin Template"
+                                alt="Doctor"
                               />
                               Allan Stuart
                             </td>
@@ -318,15 +323,6 @@
                                 >
                                   <i class="ri-close-circle-line"></i>
                                 </button>
-                                <!-- <a
-                                  href="edit-appointment.html"
-                                  class="btn btn-outline-success btn-sm"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  data-bs-title="Edit Appointment"
-                                >
-                                  <i class="ri-edit-box-line"></i>
-                                </a> -->
                               </div>
                             </td>
                           </tr>
@@ -338,7 +334,7 @@
                               <img
                                 src="assets/images/user.png"
                                 class="img-shadow img-2x rounded-5 me-1"
-                                alt="Hospital Admin Template"
+                                alt="Doctor"
                               />
                               Allan Stuart
                             </td>
@@ -364,23 +360,6 @@
                                 >
                                   <i class="ri-close-circle-line"></i>
                                 </button>
-                                <!-- <button
-                                  class="btn btn-outline-success btn-sm"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  data-bs-title="Accept"
-                                  disabled
-                                >
-                                  <i class="ri-checkbox-circle-line"></i>
-                                </button>
-                                <button
-                                  class="btn btn-danger btn-sm"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  data-bs-title="Rejected"
-                                >
-                                  <i class="ri-close-circle-line"></i>
-                                </button> -->
                               </div>
                             </td>
                           </tr>
@@ -415,6 +394,35 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/moment.min.js"></script>
+    <script>
+      // Function to sort the table by date
+      let sortOrder = 1; // 1 for ascending, -1 for descending
+
+      document
+        .getElementById("sortDate")
+        .addEventListener("click", function () {
+          const table = document.getElementById("appointmentsGrid");
+          const rows = Array.from(table.querySelectorAll("tbody tr"));
+
+          // Sort rows based on the Date column (index 5)
+          rows.sort((rowA, rowB) => {
+            const dateA = rowA.cells[5].innerText; // Get date from row A
+            const dateB = rowB.cells[5].innerText; // Get date from row B
+
+            // Convert dates to Date objects for comparison
+            const dateObjA = new Date(dateA);
+            const dateObjB = new Date(dateB);
+
+            return (dateObjA - dateObjB) * sortOrder; // Sort in ascending or descending order
+          });
+
+          // Reorder the rows in the table
+          rows.forEach((row) => table.querySelector("tbody").appendChild(row));
+
+          // Toggle sort order for the next click
+          sortOrder = -sortOrder; // If it was ascending (1), make it descending (-1)
+        });
+    </script>
 
     <!-- *************
 			************ Vendor Js Files *************

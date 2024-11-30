@@ -190,14 +190,14 @@
                     >
                   </li>
                   <li>
-                    <a
-                      href="appointments-list-patients-copy.html"
-                      class="active-sub"
+                    <a href="appointments-list-patients-copy.html"
                       >Appointments List</a
                     >
                   </li>
                   <li>
-                    <a href="appointment-record.html">Appointments Record</a>
+                    <a href="appointment-record.html" class="active-sub"
+                      >Appointments Record</a
+                    >
                   </li>
                   <li>
                     <a href="book-appointment.html">Book Appointment</a>
@@ -245,7 +245,7 @@
                 <a href="patient-dashboard.html">Home</a>
               </li>
               <li class="breadcrumb-item text-primary" aria-current="page">
-                Appointments List
+                Appointments Record
               </li>
             </ol>
             <!-- Breadcrumb ends -->
@@ -275,7 +275,7 @@
                   <div
                     class="card-header d-flex align-items-center justify-content-between"
                   >
-                    <h5 class="card-title">Appointments List</h5>
+                    <h5 class="card-title">Appointments Record</h5>
                     <a
                       href="book-appointment.html"
                       class="btn btn-primary ms-auto"
@@ -292,21 +292,16 @@
                         <thead>
                           <tr>
                             <th>#</th>
-                            <th>Patient Name</th>
-                            <th>Age</th>
                             <th>Consulting Doctor / Midwife</th>
                             <th>Department</th>
                             <th>Date</th>
                             <th>Time</th>
-                            <th>Purpose</th>
-                            <th>Actions</th>
+                            <th>Record</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td>002</td>
-                            <td>Kim Chi</td>
-                            <td>33</td>
+                            <td>001</td>
                             <td>
                               <img
                                 src="assets/images/user.png"
@@ -318,74 +313,24 @@
                             <td>Pediatrician</td>
                             <td>11/23/2024</td>
                             <td>9:45AM</td>
-                            <td>Pre-natal</td>
                             <td>
                               <div class="d-inline-flex gap-1">
                                 <button
-                                  class="btn btn-outline-success btn-sm"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  data-bs-title="Accept"
-                                >
-                                  <i class="ri-checkbox-circle-line"></i>
-                                </button>
-                                <!-- <button
                                   class="btn btn-danger btn-sm"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  data-bs-title="Rejected"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#viewReportsModal1"
                                 >
-                                  <i class="ri-close-circle-line"></i>
-                                </button> -->
-                                <a
-                                  href="edit-appointment.html"
-                                  class="btn btn-outline-success btn-sm"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  data-bs-title="Edit Appointment"
-                                >
-                                  <i class="ri-edit-box-line"></i>
-                                </a>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>001</td>
-                            <td>Kim Chi</td>
-                            <td>33</td>
-                            <td>
-                              <img
-                                src="assets/images/user.png"
-                                class="img-shadow img-2x rounded-5 me-1"
-                                alt="Hospital Admin Template"
-                              />
-                              Allan Stuart
-                            </td>
-                            <td>Pediatrician</td>
-                            <td>10/23/2024</td>
-                            <td>9:45AM</td>
-                            <td>Ultrasound</td>
-                            <td>
-                              <div class="d-inline-flex gap-1">
+                                  View Reports
+                                </button>
                                 <button
-                                  class="btn btn-outline-success btn-sm"
+                                  class="btn btn-info btn-sm"
                                   data-bs-toggle="tooltip"
                                   data-bs-placement="top"
-                                  data-bs-title="Accept"
-                                  disabled
+                                  data-bs-title="Download Report"
                                 >
-                                  <i class="ri-checkbox-circle-line"></i>
+                                  <i class="ri-file-download-line"></i>
                                 </button>
-                                <!-- <button
-                                  class="btn btn-danger btn-sm"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="top"
-                                  data-bs-title="Rejected"
-                                >
-                                  <i class="ri-close-circle-line"></i>
-                                </button> -->
                               </div>
-                              Done
                             </td>
                           </tr>
                         </tbody>

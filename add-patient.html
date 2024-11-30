@@ -39,6 +39,29 @@
     <link rel="stylesheet" href="assets/vendor/dropzone/dropzone.min.css" />
   </head>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const birthdayInput = document.getElementById("a3");
+      const ageInput = document.getElementById("a4");
+
+      birthdayInput.addEventListener("change", function () {
+        const birthday = new Date(birthdayInput.value);
+        const today = new Date();
+
+        let age = today.getFullYear() - birthday.getFullYear();
+        const monthDifference = today.getMonth() - birthday.getMonth();
+        if (
+          monthDifference < 0 ||
+          (monthDifference === 0 && today.getDate() < birthday.getDate())
+        ) {
+          age--;
+        }
+
+        ageInput.value = age > 0 ? age : ""; // Ensure no negative age
+      });
+    });
+  </script>
+
   <body>
     <!-- Page wrapper starts -->
     <div class="page-wrapper">
@@ -182,7 +205,7 @@
                 </a>
                 <ul class="treeview-menu">
                   <li>
-                    <a href="appointments.html">Appointments</a>
+                    <a href="appointments.html">Appointments Calendar</a>
                   </li>
                   <li>
                     <a href="appointments-list.html">Appointments List</a>
@@ -287,31 +310,31 @@
                       </div>
                       <div class="col-xxl-3 col-lg-4 col-sm-6">
                         <div class="mb-3">
-                          <label class="form-label" for="a2"
+                          <label class="form-label" for="a3"
+                            >Birthday <span class="text-danger">*</span></label
+                          >
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="a3"
+                            placeholder="Select Date"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-xxl-3 col-lg-4 col-sm-6">
+                        <div class="mb-3">
+                          <label class="form-label" for="a4"
                             >Age <span class="text-danger">*</span></label
                           >
                           <input
                             type="text"
                             class="form-control"
-                            id="a2"
+                            id="a4"
                             placeholder="Enter Age"
                           />
                         </div>
                       </div>
 
-                      <div class="col-xxl-3 col-lg-4 col-sm-6">
-                        <div class="mb-3">
-                          <label class="form-label" for="a4"
-                            >Create ID <span class="text-danger">*</span></label
-                          >
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="a4"
-                            placeholder="Create Unique ID"
-                          />
-                        </div>
-                      </div>
                       <div class="col-xxl-3 col-lg-4 col-sm-6">
                         <div class="mb-3">
                           <label class="form-label" for="a5"
